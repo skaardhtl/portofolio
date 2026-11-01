@@ -21,6 +21,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
+  html { scroll-padding-top: 112px; }
+
   /* ===== Variabel tema ===== */
   body.dark {
     --bg: #0b0f19; --text: #e2e8f0; --text-strong: #ffffff; --text-muted: #94a3b8;
@@ -145,44 +147,49 @@
 
 <!-- HEADER -->
 <header class="fixed top-0 left-0 w-full z-50 glass-nav">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-    <a href="#home" class="flex items-center gap-3 group">
-      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-cyan-400 flex items-center justify-center text-white font-extrabold text-xl shadow-lg group-hover:scale-105 transition-transform">R</div>
-      <span class="text-xl font-bold tracking-wide text-white group-hover:text-cyan-400 transition-colors">
+  <!-- Baris 1: foto + nama (kiri), mode + lampu (kanan) -->
+  <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-3 pb-2 flex items-center justify-between gap-3">
+    <a href="#home" class="flex items-center gap-2.5 sm:gap-3 group min-w-0">
+      <div class="relative w-10 h-10 sm:w-11 sm:h-11 shrink-0 rounded-full overflow-hidden bg-gradient-to-tr from-indigo-600 via-purple-600 to-cyan-400 flex items-center justify-center text-white font-extrabold text-lg shadow-lg ring-2 ring-purple-500/50 group-hover:scale-105 transition-transform">
+        R
+        <img src="poto.jpeg" alt="Foto Riska Raudhatul A'naini" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()">
+      </div>
+      <span class="min-w-0 truncate text-sm sm:text-xl font-bold tracking-wide text-white group-hover:text-cyan-400 transition-colors">
         Riska Raudhatul <span class="text-purple-400 neon-text-purple">A'naini</span>
       </span>
     </a>
 
-    <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
-      <a href="#home" class="text-slate-300 hover:text-cyan-400 transition-colors">Beranda</a>
-      <a href="#about" class="text-slate-300 hover:text-cyan-400 transition-colors">Tentang</a>
-      <a href="#skills" class="text-slate-300 hover:text-cyan-400 transition-colors">Keahlian</a>
-      <a href="#projects" class="text-slate-300 hover:text-cyan-400 transition-colors">Proyek</a>
-      <a href="#gallery" class="text-slate-300 hover:text-cyan-400 transition-colors">Dokumentasi</a>
-      <a href="#contact" class="text-slate-300 hover:text-cyan-400 transition-colors">Kontak</a>
-    </nav>
-
-    <div class="flex items-center gap-4">
-      <!-- Theme Toggle -->
+    <div class="flex items-center gap-2 sm:gap-3 shrink-0">
       <button id="theme-toggle" type="button" class="theme-btn" aria-label="Ganti mode gelap/terang">
         <i id="theme-icon" class="fa-solid fa-sun"></i>
       </button>
-
-      <!-- Lamp Switch -->
       <div class="flex items-center gap-2">
-        <i class="fa-solid fa-lightbulb text-amber-400 text-sm animate-pulse"></i>
+        <i class="fa-solid fa-lightbulb text-amber-400 text-sm animate-pulse hidden sm:block"></i>
         <button id="lamp-toggle" class="lamp-switch" aria-label="Toggle Lamp/Glow Effect">
           <div class="lamp-switch-handle"><i class="fa-solid fa-power-off"></i></div>
         </button>
       </div>
-
-      <button id="menu-btn" type="button" aria-label="Buka menu" class="md:hidden p-2.5 rounded-xl bg-slate-800/80 text-slate-300 border border-slate-700">
-        <i class="fa-solid fa-bars text-xl"></i>
-      </button>
     </div>
   </div>
 
-  <div id="mobile-menu" class="hidden md:hidden border-b border-slate-800 bg-slate-900/95 backdrop-blur-xl">
+  <!-- Baris 2: navbar -->
+  <div class="border-t border-slate-800/60">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-12 flex items-center justify-start md:justify-center">
+      <button id="menu-btn" type="button" aria-label="Buka menu" class="md:hidden p-2 rounded-xl bg-slate-800/80 text-slate-300 border border-slate-700">
+        <i class="fa-solid fa-bars text-lg"></i>
+      </button>
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+        <a href="#home" class="text-slate-300 hover:text-cyan-400 transition-colors">Beranda</a>
+        <a href="#about" class="text-slate-300 hover:text-cyan-400 transition-colors">Tentang</a>
+        <a href="#skills" class="text-slate-300 hover:text-cyan-400 transition-colors">Keahlian</a>
+        <a href="#projects" class="text-slate-300 hover:text-cyan-400 transition-colors">Proyek</a>
+        <a href="#gallery" class="text-slate-300 hover:text-cyan-400 transition-colors">Dokumentasi</a>
+        <a href="#contact" class="text-slate-300 hover:text-cyan-400 transition-colors">Kontak</a>
+      </nav>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 bg-slate-900/95 backdrop-blur-xl">
     <div class="px-4 pt-2 pb-6 space-y-2 text-base font-medium">
       <a href="#home" class="m-link block px-3 py-2 rounded-lg hover:bg-slate-800 text-slate-200 hover:text-cyan-400">Beranda</a>
       <a href="#about" class="m-link block px-3 py-2 rounded-lg hover:bg-slate-800 text-slate-200 hover:text-cyan-400">Tentang</a>
@@ -212,8 +219,9 @@
 
         <p class="text-xl sm:text-2xl font-semibold text-cyan-300">S1 Sistem Informasi | Data Analyst</p>
 
-        <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
-          Lulusan Sistem Informasi Universitas Cipasung (IPK 3,80) yang berfokus pada data mining, visualisasi data, dan analisis proses bisnis. Saya mengubah data kompleks dan kebutuhan bisnis menjadi wawasan strategis serta rekomendasi yang terukur.
+        <!-- Perubahan pada baris di bawah: ditambahkan class text-justify -->
+        <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal text-justify">
+          Data yang berantakan bukan masalah, melainkan bahan baku. Sebagai lulusan Sistem Informasi Universitas Cipasung dengan IPK 3,80, saya mengolahnya lewat data mining, visualisasi data, dan analisis proses bisnis menjadi wawasan yang jelas dan rekomendasi yang terukur. Yuk, lihat karya dan prosesnya di bawah ini.
         </p>
 
         <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
@@ -250,11 +258,13 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
       <div class="lg:col-span-7 space-y-6">
-        <p class="text-slate-300 leading-relaxed text-lg">
-          Saya menyelesaikan S1 Sistem Informasi di Universitas Cipasung Tasikmalaya dengan IPK <strong class="text-cyan-400">3,80/4,00</strong>. Selama studi, saya mendalami bidang analisis dan perancangan sistem informasi, pengelolaan basis data, data mining, dan business intelligence.
+        <!-- Perubahan pada paragraf 1: ditambahkan class text-justify -->
+        <p class="text-slate-300 leading-relaxed text-lg text-justify">
+          Bagi saya, data baru berarti ketika ia menjawab persoalan nyata. Itu yang mendorong saya mendalami data mining, visualisasi data, dan analisis proses bisnis selama S1 Sistem Informasi di Universitas Cipasung Tasikmalaya, yang saya selesaikan dengan IPK <strong class="text-cyan-400">3,80/4,00</strong>. Dari analisis dan perancangan sistem, basis data, hingga business intelligence, saya terbiasa menerjemahkan kebutuhan bisnis menjadi solusi berbasis data.
         </p>
-        <p class="text-slate-300 leading-relaxed text-lg">
-          Skripsi saya Penerapan Data mining Menggunakan Algoritma <span class="text-purple-300 font-semibold">Naive Bayes</span> Dalam Prediksi Obat Fast moving Dan Slow moving Untuk Mendukung Pengelolaan Persediaan Pada Apotek Tanikha, dengan hasil akurasi 98,11%, precision 98,26%, dan recall 98,11%, yang berhasil diterbitkan sebagai artikel jurnal ilmiah. Selain itu, saya menyelesaikan PKL sebagai <span class="text-purple-300 font-semibold">Business Planner</span> di KBIHU Qoshrul Muhajirin untuk merancang digitalisasi proses bisnis layanan Haji dan Umrah.
+        <!-- Perubahan pada paragraf 2: ditambahkan class text-justify -->
+        <p class="text-slate-300 leading-relaxed text-lg text-justify">
+          Salah satu karya utama saya adalah skripsi: model <span class="text-purple-300 font-semibold">Naive Bayes</span> yang memprediksi obat fast moving dan slow moving agar stok di Apotek Tanikha lebih terkelola. Hasilnya akurat, dengan akurasi 98,11%, precision 98,26%, dan recall 98,11%, dan telah terbit sebagai artikel jurnal ilmiah. Dari sisi bisnis, lewat PKL sebagai <span class="text-purple-300 font-semibold">Business Planner</span> di KBIHU Qoshrul Muhajirin, saya merancang digitalisasi proses bisnis layanan Haji dan Umrah, mulai dari alur pendaftaran hingga pelaporan.
         </p>
 
         <div class="space-y-4 pt-4">
@@ -453,19 +463,19 @@ const projects = [
   {
     cat: 'bi', catLabel: 'Business Intelligence', image: 'DASBOARD.png',
     title: 'Dashboard Penjualan Mobil Bekas',
-    desc: 'Dashboard interaktif dari 999 data penjualan mobil bekas. Menampilkan total mobil, rata-rata kilometer dan harga, distribusi transmisi dan bahan bakar, hubungan usia dengan harga, serta filter transmisi dan tahun<ul class="list-disc pl-5 space-y-1"><li>	Membangun dashboard interaktif dari 999 data penjualan mobil bekas menggunakan Power BI Desktop</li><li>	Menyajikan indikator utama (total mobil, rata-rata kilometer, rata-rata harga), distribusi berdasarkan transmisi dan jenis bahan bakar, serta hubungan usia mobil dengan harga.</li><li>	Menemukan insight bahwa harga cenderung turun seiring bertambahnya usia mobil, menambahkan filter interaktif berdasarkan transmisi dan tahun.</li></ul>',
+    desc: '<p>Dashboard interaktif dari 999 data penjualan mobil bekas. Menampilkan total mobil, rata-rata kilometer dan harga, distribusi transmisi dan bahan bakar, hubungan usia dengan harga, serta filter transmisi dan tahun.</p><ul class="list-disc pl-5 space-y-1 mt-2"><li>Membangun dashboard interaktif dari 999 data penjualan mobil bekas menggunakan Power BI Desktop.</li><li>Menyajikan indikator utama (total mobil, rata-rata kilometer, rata-rata harga), distribusi berdasarkan transmisi dan jenis bahan bakar, serta hubungan usia mobil dengan harga.</li><li>Menemukan insight bahwa harga cenderung turun seiring bertambahnya usia mobil, dan menambahkan filter interaktif berdasarkan transmisi dan tahun.</li></ul>',
     tags: ['Power BI', 'Dashboard', 'Data Visualization']
   },
   {
     cat: 'system', catLabel: 'Analisis Sistem', image: 'usacase.png',
     title: 'Perancangan Sistem Informasi Layanan Haji & Umrah',
-    desc: 'Mata kuliah Analisis dan Perancangan Sistem Informasi. Use case untuk aktor Jamaah dan Staf Admin, serta activity diagram, sequence diagram, class diagram, dan flowchart dari registrasi, tabungan, hingga pelaksanaan ibadah.<ul class="list-disc pl-5 space-y-1"><li>Menyusun use case diagram untuk aktor Jamaah dan Staf Admin yang mencakup pengelolaan paket, pendaftaran, tabungan, testimoni, user, profil, dan laporan.</li><li>Membuat activity diagram, sequence diagram, class diagram, dan flowchart menggunakan draw.io.</li><li>Memodelkan alur layanan dari registrasi akun, verifikasi admin, setoran tabungan, dan pendaftaran hingga pelaksanaan ibadah dan testimoni.</li></ul>',
+    desc: '<p>Mata kuliah Analisis dan Perancangan Sistem Informasi. Use case untuk aktor Jamaah dan Staf Admin, serta activity diagram, sequence diagram, class diagram, dan flowchart dari registrasi, tabungan, hingga pelaksanaan ibadah.</p><ul class="list-disc pl-5 space-y-1 mt-2"><li>Menyusun use case diagram untuk aktor Jamaah dan Staf Admin yang mencakup pengelolaan paket, pendaftaran, tabungan, testimoni, user, profil, dan laporan.</li><li>Membuat activity diagram, sequence diagram, class diagram, dan flowchart menggunakan draw.io.</li><li>Memodelkan alur layanan dari registrasi akun, verifikasi admin, setoran tabungan, dan pendaftaran hingga pelaksanaan ibadah dan testimoni.</li></ul>',
     tags: ['UML', 'draw.io', 'Flowchart']
   },
   {
     cat: 'system', catLabel: 'Analisis Sistem', image: 'kbihu-poto.jpeg',
     title: 'PKL Business Planner di KBIHU Qoshrul Muhajirin',
-    desc: '<ul class="list-disc pl-5 space-y-1"><li>Merancang model bisnis dan strategi layanan Haji dan Umrah berbasis web untuk meningkatkan efisiensi dan integrasi layanan.</li><li>Menganalisis proses bisnis existing (as-is) dan merancang proses bisnis baru (to-be) yang terdigitalisasi, sehingga meningkatkan efisiensi waktu proses hingga 40%.</li><li>Memetakan alur proses menggunakan BPMN dan flowchart sebagai acuan perancangan sistem.</li><li>Menyusun business plan yang mencakup alur pendaftaran jamaah, manajemen arsip, dan sistem pelaporan.</li><li>Menyusunan Dokumentasi Teknik, proposal dan LPJ kegiatan</li></ul>',
+    desc: '<ul class="list-disc pl-5 space-y-1"><li>Merancang model bisnis dan strategi layanan Haji dan Umrah berbasis web untuk meningkatkan efisiensi dan integrasi layanan.</li><li>Menganalisis proses bisnis existing (as-is) dan merancang proses bisnis baru (to-be) yang terdigitalisasi, sehingga meningkatkan efisiensi waktu proses hingga 40%.</li><li>Memetakan alur proses menggunakan BPMN dan flowchart sebagai acuan perancangan sistem.</li><li>Menyusun business plan yang mencakup alur pendaftaran jamaah, manajemen arsip, dan sistem pelaporan.</li><li>Menyusun dokumentasi teknik, proposal, dan LPJ kegiatan.</li></ul>',
     tags: ['BPMN', 'Business Model', 'Business Plan']
   }
 ];
@@ -473,16 +483,16 @@ const projects = [
 // ===== Data Galeri (ganti src/judul sesuai gambar masing-masing) =====
 const gallery = [
   { img: 'sct.png', alt: 'Sertifikat Wadhwani Foundation', tag: 'Sertifikat', c: 'cyan', icon: 'fa-file-code', title: 'Sertifikat Wadhwani Foundation' },
-  { img: 'acurasi.png', alt: 'Hasil Confusion Matrix Naive Bayes', tag: 'Data Mining', c: 'purple', icon: 'fa-file-code', title: 'Hasil Confusion Matrix Naive Bayes ' },
+  { img: 'acurasi.png', alt: 'Hasil Confusion Matrix Naive Bayes', tag: 'Data Mining', c: 'purple', icon: 'fa-file-code', title: 'Hasil Confusion Matrix Naive Bayes' },
   { img: 'DASBOARD.png', alt: 'Dashboard Power BI Mobil Bekas', tag: 'Power BI', c: 'cyan', icon: 'fa-chart-column', title: 'Dashboard Penjualan Mobil' },
   { img: 'usacase.png', alt: 'Diagram UML Sistem Layanan Haji', tag: 'UML & Flowchart', c: 'purple', icon: 'fa-diagram-project', title: 'Perancangan UML USACASE' },
   { img: 'KBIHU-adm.png', alt: 'Diagram UML Sistem Layanan Haji', tag: 'UML & Flowchart', c: 'purple', icon: 'fa-diagram-project', title: 'Perancangan UML Activity Diagram' },
   { img: 'SQ.png', alt: 'Diagram UML Sistem Layanan Haji', tag: 'UML & Flowchart', c: 'purple', icon: 'fa-diagram-project', title: 'Perancangan UML Sequence Diagram' },
   { img: 'Class.png', alt: 'Diagram UML Sistem Layanan Haji', tag: 'UML & Flowchart', c: 'purple', icon: 'fa-diagram-project', title: 'Perancangan UML Class Diagram' },
   { img: 'KBIHUQM26-flowchart.drawio (2).png', alt: 'Pemetaan BPMN KBIHU', tag: 'BPMN & Business Plan', c: 'cyan', icon: 'fa-network-wired', title: 'Proses Bisnis BPMN KBIHU' },
-  { img: 'kbihu-poto.jpeg', alt: 'Pemetaan BPMN KBIHU', tag: 'Dokumentasi', c: 'cyan', icon: 'fa-network-wired', title: 'Dokumentasi dengan pihak KBIHU Qoshrul Muhajirin' },
-  { img: 'magang.jpeg', alt: 'Pemetaan BPMN KBIHU', tag: 'Dokumentasi', c: 'cyan', icon: 'fa-network-wired', title: 'Kegian PKL' },
-  { img: 'diskusi.jpeg', alt: 'Pemetaan BPMN KBIHU', tag: 'Dokumentasi', c: 'cyan', icon: 'fa-network-wired', title: 'Diskusi Alur Proses bisnis dengan pihak KBIHU QM' }
+  { img: 'kbihu-poto.jpeg', alt: 'Dokumentasi KBIHU', tag: 'Dokumentasi', c: 'cyan', icon: 'fa-network-wired', title: 'Dokumentasi dengan pihak KBIHU Qoshrul Muhajirin' },
+  { img: 'magang.jpeg', alt: 'Kegiatan PKL', tag: 'Dokumentasi', c: 'cyan', icon: 'fa-network-wired', title: 'Kegian PKL' },
+  { img: 'diskusi.jpeg', alt: 'Diskusi proses bisnis KBIHU', tag: 'Dokumentasi', c: 'cyan', icon: 'fa-network-wired', title: 'Diskusi Alur Proses bisnis dengan pihak KBIHU QM' }
 ];
 
 const renderTag = t => `<span class="text-xs bg-slate-800/80 border border-slate-700 text-slate-300 px-3 py-1 rounded-md">${t}</span>`;
